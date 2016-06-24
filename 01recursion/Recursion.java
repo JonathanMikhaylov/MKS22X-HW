@@ -1,24 +1,27 @@
-public class Recursion{
+public class Recursion implements hw01{
 
-    public static void main(String[] args) {
-	System.out.println(sqrt(100.0));
-    }
     public String name() {
 	return "Mikhaylov,Jonathan";
     }
     
-    public static double sqrt(double n) throws IllegalArgumentException {
-	if (n<0) throw new IllegalArgumentException();
-	
+    public double sqrt(double n) {
+	if (n<0) {
+	    IllegalArgumentException i = new IllegalArgumentException();
+	    throw i;
+	}else if(n == 0.0) return 0;
+	else {
+	    //System.out.println(n);
+	    return helper(n, n);    
+	}
     }
     
-    public static double helper(double n, double guess) {
-	if (guess*guess < n+1 && guess*guess > n-1) {
+    public double helper(double n, double guess) {
+	if (Math.abs( (n - guess * guess) / n) <= 0.000000000001) {
             return guess;
         } else {
-            System.out.println("guess =" + helper(n,1 ));
-        }
-    }
-	guess = ( (n/guess)+guess ) /2;
+	    guess = ( n/guess + guess) /2;
+	    //System.out.println(guess);
+	   return  helper(n, guess);
+	}
     }
 }

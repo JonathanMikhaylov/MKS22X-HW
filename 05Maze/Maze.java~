@@ -80,7 +80,7 @@ public class Maze{
     private boolean solve(int x, int y){
         if(animate){
             System.out.println(this);
-            wait(100);
+            wait(50);
         }
 	if(maze[y][x]=='E'){
 	    return true;

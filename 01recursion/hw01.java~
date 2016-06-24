@@ -1,0 +1,5 @@
+public interface hw01 {
+
+    public double sqrt(double n);
+    public double helper(double n, double guess);
+}

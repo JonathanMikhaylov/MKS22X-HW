@@ -29,21 +29,19 @@ public class QueenBoard{
     }
 
     public boolean solveH(int col) {
-	if (col == board.length-1) {
-	    for (int i =0; i<board.length; i++) {
-		if(board[i][col] == 0) board[i][col] = 1;
-	    }
+	if (col >= board.length) {
 	    return true;
 	}
 	else{
 	    for (int i = 0; i<=board.length; i++) {
 		if (board[i][col] == 0) {
 		    addQueen(i,col);
-		    if ( solveH(col+1) ) return true;;
-		    else remQueen(i, col);
+		    if ( solveH(col+1) ) return true;
+		    else removeQueen(i, col);
 		}
-	    return false;
+	    }
 	}
+	return false;
     }
 
     public void printSolution(){
@@ -59,7 +57,7 @@ public class QueenBoard{
 		if (board[i][j] < 0) ret+= "+\t";		
 		else if (board[i][j] == 1) ret+= "Q\t";
 	    }
-	    ret += "\n";
+	    if (i != board.length - 1) ret += "\n";
 	}
 	System.out.println(ret);
     }
@@ -118,10 +116,10 @@ public class QueenBoard{
 
     public static void main(String[]args){
 	QueenBoard b = new QueenBoard(5);
-        System.out.println(b);
+        //System.out.println(b);
 	b.addQueen(3,0);
 	b.addQueen(0,1);
-        System.out.println(b);
+        //System.out.println(b);
 	b.removeQueen(3,0);
 	b.removeQueen(0,1);
 	//        System.out.println(b);
